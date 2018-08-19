@@ -71,7 +71,14 @@ export class HeroesService {
   }
 
   buscarHeroes(termino): Array<Heroe>{
-    return this.heroes.filter( e => e.nombre.toUpperCase().includes(termino.toUpperCase()));
+    let heroes = [];
+    this.heroes.forEach((e,i) => {
+      if (e.nombre.toUpperCase().includes(termino.toUpperCase())){
+        let heroe = e;
+        heroe.idx=i;
+        heroes.push(heroe);
+      }
+    });
+    return heroes;
   }
-  
 }
